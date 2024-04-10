@@ -70,10 +70,20 @@ for config in table:
 
 result = permute(elements, n)
 result = [[x+1 for x in sublist] for sublist in result]
-print(f'Applying Ram scheme to the permutations')
+print(f'Applying wworking scheme to the permutations')
 apply_scheme(table, result)
 
+new_table = []
+S = N*(N+1)/2
+for config in table:
+    U = sum(config[0:2])
+    guess = round(abs(U-S)/n) 
+    while guess in config[0:2]:
+        guess = (guess%n)+1
+    t = [config[0], config[1], guess]
+    new_table.append([config[0], config[1], guess])
 
+print(f'Applying another scheme {new_table} to the permutations')
 
 apply_scheme(new_table, result)
 
